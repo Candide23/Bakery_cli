@@ -6,7 +6,7 @@ Use this repository as a template for your Ruby CLI (command line interface) pro
 
 Bakery CLI Application
 
-Summary
+##Summary
 This Ruby CLI application creates a Bakery shop, permitting clients to see the menu and put orders for different cakes.
 
 Bakery Class
