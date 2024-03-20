@@ -19,10 +19,10 @@ order: Processes user orders.
 The main method runs the application by initializing the bakery, displaying the menu, and handling user orders.
 
 Run the Main Method in Terminal with:
-ruby bakery.rb
+```ruby bakery.rb```
 
 ## Testing
 Testing is implemented using MiniTest to ensure correct functionality, including testing name, location, and order processing.
 
 Run tests in the Terminal with:
-ruby tests/test_bakery.rb
+```ruby tests/test_bakery.rb```
