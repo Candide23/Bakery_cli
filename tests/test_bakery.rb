@@ -15,15 +15,15 @@ class BakeryTest < Minitest::Test
   end
 
   def test_order_lemon_cake
-    assert_output(/You ordered 2 lemom cakes./) { @bakery.order(1, 2) }
+    assert_output(/You ordered 2 Lemom Cakes./) { @bakery.order(1, 2) }
   end
 
   def test_order_cookies
-    assert_output(/You ordered 3 cookies./) { @bakery.order(2, 3) }
+    assert_output(/You ordered 3 Cookies./) { @bakery.order(2, 3) }
   end
 
   def test_order_chocolate_cake
-    assert_output(/You ordered 1 chocolate cake./) { @bakery.order(3, 1) }
+    assert_output(/You ordered 1 Chocolate Cake./) { @bakery.order(3, 1) }
   end
 
   def test_invalid_order
