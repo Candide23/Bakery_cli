@@ -24,9 +24,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install Ruby 3.4.2 and gems
+      - name: Install Ruby 3.2.2 and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
+          ruby-version: 3.2.2 
           bundler-cache: true
       - name: Set up database schema
         run: bin/rails db:schema:load
@@ -49,6 +50,6 @@ jobs:
       - name: Lint Javascript files
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
       - run: npm ci
       - run: npm run lint
