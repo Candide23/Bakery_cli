@@ -27,6 +27,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Ensure Gemfile exists
+        run: ls -la && test -f Gemfile
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf
         with:
@@ -42,11 +45,15 @@ jobs:
       - name: Run RSpec tests
         run: bundle exec rspec
 
+
   lint:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Ensure Gemfile exists
+        run: ls -la && test -f Gemfile
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf
@@ -67,6 +74,10 @@ jobs:
 
       - name: Install JS dependencies
         run: npm ci
+
+      - name: Run JS linter
+        run: npm run lint
+
 
       - name: Run JS linter
         run: npm run lint
