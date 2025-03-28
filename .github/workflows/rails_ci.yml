@@ -1,11 +1,13 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
 name: "Ruby on Rails CI"
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 jobs:
   test:
     runs-on: ubuntu-22.04
@@ -24,14 +26,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf
         with:
           ruby-version: 3.2.2
           bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
+
       - name: Set up database schema
         run: bin/rails db:schema:load
-      - name: Run rspec tests
+
+      - name: Run RSpec tests
         run: bundle exec rspec
 
   lint:
@@ -46,13 +54,20 @@ jobs:
           ruby-version: 3.2.2
           bundler-cache: true
 
+      - name: Install dependencies
+        run: bundle install
+
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
 
-      - name: Lint Javascript files
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - run: npm ci
-      - run: npm run lint
+      - name: Install JS dependencies
+        run: npm ci
+
+      - name: Run JS linter
+        run: npm run lint
+
